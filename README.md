@@ -22,7 +22,7 @@ Botwa uses SQLite, with some tables:
 ## Plugins
 1. Put your python file inside 'plugins' folder
 2. Create function with 3 parameters: date string, chat message, contact name (example provided)
-2. Register your function name on command_list table
+2. Register your function name on command_list table: insert into command_list(command_words,method) values (your_command_words,your_function_name)
 
 ## Tips
 Please use multi-device beta, so that you won't have to monitor whatsapp status on your phone
