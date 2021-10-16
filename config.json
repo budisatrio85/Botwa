@@ -1,0 +1,23 @@
+{
+    "chat_xpath":{
+        "contact":"//span[@title='{}']",
+        "textbox":"//*[@id='main']/footer/div[1]/div[1]/div/div[2]/div",
+        "attachment":"//*[@id='main']/footer/div[1]/div[1]/div[2]/div",
+        "textbox_with_attachment":"//*[@id='app']/div/div/div[2]/div[2]/span/div/span/div/div/div[2]/div[1]/span/div/div[2]/div/div[3]/div[1]/div[2]",
+		"image_1":"//*[@id='main']/footer/div[1]/div[1]/div[2]/div/span/div/div/ul/li[1]/button/input",
+		"image_n":"//*[@id='app']/div/div/div[2]/div[2]/span/div/span/div/div/div[2]/input"
+    },
+    "thread_xpath":{
+        "start_message":"//*[@id='main']/div[3]/div/div/div",
+        "number_chat":"//*[@id='pane-side']/div[1]/div/div/div",
+        "number_notification":"/div/div/div[2]/div[2]/div[2]/span[1]",
+        "contact_name":"/div/div/div[2]/div[1]/div[1]/span",
+		"contact_name_group":"/div/div/div[2]/div[1]/div[1]/span/span",
+        "each_thread":"/div/div/div[2]/div[2]/div[2]/span[1]/div/span"
+    },
+    "db_location":"D:\\SOURCE\\BotWA\\BotWA\\botwa.db3",
+    "sleep_seconds":1,
+    "refresh_every":60,
+    "contact_no":"081295668925",
+    "contact_tag":"@Botwa"
+}
