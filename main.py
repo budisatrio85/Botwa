@@ -97,7 +97,6 @@ def parse_and_execute(list_command,message,contact_name):
     return result
 
 def process_message(contact_group,contact_name,contact_message,contact_date_str):
-    global queue_messages
     conn = sqlite3.connect(config['db_location'])
     c = conn.cursor()
     c.execute("INSERT INTO chat_history (contact_name,contact_message,contact_group,contact_date_str,created_at,status) VALUES (?,?,?,?,?,0)",[contact_name,contact_message,contact_group,contact_date_str,datetime.now()])
@@ -108,18 +107,9 @@ def process_message(contact_group,contact_name,contact_message,contact_date_str)
     print("Processing: " + contact_message)
     try:
         message_full = ""+ Keys.ALT + Keys.ENTER
-        image_path = ""
-        if config['contact_tag'] in contact_message:
+        if config['contact_tag'] in contact_message or contact_group == contact_name:
             message_full = "Hi "+contact_group+': '+ Keys.ALT + Keys.ENTER
-        hasil = parse_and_execute(data,contact_message,contact_name)
-        if '.png' in hasil:
-            image_path = hasil
-            hasil = 'Berikut adalah tampilannya'+ Keys.ALT + Keys.ENTER
-            message_full += hasil + Keys.ALT
-            c = conn.cursor()
-            c.execute("INSERT INTO chat_reply (contact_name,contact_message,contact_group,contact_date_str,created_at,status, image) VALUES (?,?,?,?,?,0,?)",[contact_name,message_full,contact_group,contact_date_str,datetime.now(),image_path])
-        else:
-            message_full += hasil + Keys.ALT
+            message_full += parse_and_execute(data,contact_message,contact_name) + Keys.ALT
             c = conn.cursor()
             c.execute("INSERT INTO chat_reply (contact_name,contact_message,contact_group,contact_date_str,created_at,status) VALUES (?,?,?,?,?,0)",[contact_name,message_full,contact_group,contact_date_str,datetime.now()])
     except Exception as e:
